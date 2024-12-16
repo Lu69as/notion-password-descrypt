@@ -1,11 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
     <title>Notion - Texto encriptado</title>
@@ -13,34 +10,66 @@
   <body>
       <div class="container p-3">
         <div>
-            <label>Senha</label>
+            <label>Password</label>
             <input class="form-control" name="password" id="password" type="password">
         </div>
         <div>
-            <label>Texto</label>
-            <textarea class="form-control" id="text" rows="10"></textarea>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="option" id="optionEncrypt">
-            <label class="form-check-label" for="optionEncrypt">
-                Encriptar
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="option" id="optionDecrypt">
-            <label class="form-check-label" for="optionDecrypt">
-                Decriptar
-            </label>
+            <label>Text to Encrypt/Decrypt </label>
+            <input class="form-control" id="text"></input>
         </div>
         <div>
-            <button id="go" type="button" class="btn btn-primary">Gerar texto</button>
-            <button onclick="copy()" type="button" class="btn btn-success ml-4">Copiar para o clipboard</button>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="option" id="optionEncrypt">
+                <label class="form-check-label" for="optionEncrypt">
+                    Encrypt Text
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="option" id="optionDecrypt">
+                <label class="form-check-label" for="optionDecrypt">
+                    Decrypt Text
+                </label>
+            </div>
         </div>
-        <h1 class="mt-1">Resultado</h1>
+        <div>
+            <button id="go" type="button" class="btn btn-primary">Genrate text</button>
+            <button onclick="copy()" type="button" class="btn btn-success ml-4">Copy to clipboard</button>
+        </div>
+        <h1 class="mt-1">Result</h1>
         <div id="result" style='white-space:pre'>
             
         </div>
       </div>
+    <style>
+        body {
+            background: #191919;
+            color: #D3D3D3;
+        }
+        .container.p-3 {
+            display: flex !important;
+            flex-direction: column;
+            gap: 20px !important;
+        }
+        input { 
+            background: #202020;
+            border: solid 1px #fff !important;
+            color: #D3D3D3 !important;
+        }
+        input {
+            border: solid 1px #fff !important;
+            color: #D3D3D3 !important;
+        }
+        input:not(:checked) {
+            background: #202020 !important;
+        }
+        .form-control {
+            margin-top: 8px;
+        }
+        div:has(> .form-check) {
+            display: flex;
+            gap: 35px;
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script type="text/javascript">
         var senha = document.getElementById("password");
